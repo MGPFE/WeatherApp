@@ -33,7 +33,7 @@ def index(response):
             print(weather_dict["code"])
         except KeyError:
             weather_dict = {
-                "city": "Please input a city",
+                "city": "Please input a valid city",
             }
         return render(response, "main/page/index.html", {
             "weather": weather_dict,
