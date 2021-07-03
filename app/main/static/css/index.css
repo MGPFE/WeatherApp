@@ -1,0 +1,233 @@
+* {
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+	background-image: url("/static/imgs/day.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.background {
+	width: 100%;
+
+}
+
+.container {
+	width: 90%;
+	max-width: 1920px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+}
+
+.card {
+	margin-top: 5%;
+	width: 65%;
+	box-shadow: 0px 0px 10px #363636;
+	border-radius: 10px;
+	background-color: white;
+	color: black;
+}
+
+.card-top {
+	font-size: 3rem;
+	border-bottom: 1px solid gainsboro;
+	padding: 0.2em;
+	text-align: center;
+}
+
+.card-middle {
+	font-size: 1.5rem;
+	text-align: center;
+	padding: 0.5em;
+	border-bottom: 1px solid gainsboro;
+	margin-bottom: 1em;
+}
+
+.card-bottom {
+	display: flex;
+	justify-content: space-evenly;
+	font-size: 1.5rem;
+	text-align: center;
+	padding: 0.2em;
+	border-bottom: 1px solid gainsboro;
+}
+
+.card-footer {
+	padding: 0.2em;
+	text-align: center;
+	color: #b0b0b0;
+	font-weight: 200;
+}
+
+.city {
+	display: flex;
+	justify-content: center;
+}
+
+.spacer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 5%;
+}
+
+.city-input {
+	border-radius: 10px;
+	border: 1px solid gainsboro;
+	font-size: 20px;
+	height: 2em;
+	width: 50%;
+	max-width: 200px;
+	transition: 0.3s transform;
+}
+
+.city-input:hover {
+	transform: translateX(-10px);
+}
+
+.city-input::placeholder {
+	color: gainsboro;
+}
+
+.submit-city {
+	border-radius: 10px;
+	background-color: white;
+	border: 1px solid gainsboro;
+	transition: 0.3s transform;
+}
+
+.submit-city:hover {
+	transform: translateX(10px);
+	cursor: pointer;
+}
+
+.info {
+	width: 70%;
+	display: inline-block;
+}
+
+.info-rest {
+	margin-bottom: 1em;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.temperature {
+	border: 1px solid gainsboro;
+	margin-bottom: 0.5em;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px gainsboro;
+	transition: 0.3s transform;
+	padding: 0.2em;
+}
+
+.weather {
+	border: 1px solid gainsboro;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px gainsboro;
+	transition: 0.3s transform;
+	padding: 0.2em;
+	width: 47%;
+}
+
+.wind {
+	border: 1px solid gainsboro;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px gainsboro;
+	transition: 0.3s transform;
+	padding: 0.2em;
+	width: 47%;
+}
+
+.icon {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.icon img {
+	width: 100%;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px gainsboro;
+	transition: 0.3s transform;
+}
+
+.weather:hover,
+.temperature:hover,
+.wind:hover,
+.icon img:hover {
+	transform: scale(1.05, 1.05);
+}
+
+p {
+	font-size: 0.9em;
+	margin-bottom: 0;
+}
+
+h5 {
+	margin: 0 auto;
+}
+
+h4 {
+	margin-top: 0;
+}
+
+@media (max-width: 1080px) {
+
+	.card {
+		width: 85%;
+	}
+
+	.info-rest {
+		flex-direction: column;
+	}
+
+	.weather {
+		width: 99.635%;
+		margin-bottom: 0.5em;
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+	.wind {
+		width: 99.635%;
+		padding-right: 0;
+		padding-left: 0;
+	}
+
+}
+
+@media (max-width: 650px) {
+	.card {
+		width: 100%;
+	}
+
+	.weather:hover,
+	.wind:hover,
+	.temperature:hover,
+	.icon img:hover {
+		transform: scale(1.02, 1.02);
+	}
+}
+
+@media (max-width: 480px) {
+	.card-bottom {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.info {
+		width: 95%;
+	}
+
+	.icon {
+		flex-direction: row;
+		width: 100%;
+		margin-bottom: 0.5em;
+	}
+}

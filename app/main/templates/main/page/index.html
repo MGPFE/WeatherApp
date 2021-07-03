@@ -1,0 +1,104 @@
+{% extends "main/base.html" %}
+
+{% block title %}Test{% endblock %}
+
+{% block content %}
+<div class="card" id="card">
+	<div class="card-top" id="top">
+		{% if weather.city != "Please enter a city" and weather.code == 200 %}
+		<h5>{{ weather.city }}, {{ weather.country }}</h5>
+		{% else %}
+		<h5>{{ weather.city }}</h5>
+		{% endif %}
+	</div>
+	<div class="card-middle" id="middle">
+		<form class="city" method="post">
+			{% csrf_token %}
+			<input type="text" name="ct" class="city-input" id="city-input" placeholder="Type here!">
+			<div class="spacer">|</div>
+			<input type="submit" class="submit-city" id="submit-city" value="Submit"></input>
+		</form>
+	</div>
+	<div class="card-bottom" id="bottom">
+		<div class="icon">
+			<a href="https://openweathermap.org/city/{{ weather.city_id }}"><img src="/static/imgs/icons/{{ weather.icon }}.png" alt="icon" id="icon"></a>
+		</div>
+		<div class="info">
+			<div class="temperature" id="temperature">
+			<h4>Temperature</h4>
+			<p>Temperature: {{ weather.temp }} &#x2103;</p>
+			<p>Feels Like: {{ weather.feels_like }} &#x2103;</p>
+			</div>
+			<div class="info-rest">
+				<div class="weather" id="weather">
+					<h4>Weather conditions</h4>
+					<p>{{ weather.main }}</p>
+					<p>{{ weather.desc }}</p>
+					<p>{{ weather.pressure }} hPa</p>
+				</div>
+				<div class="wind" id="wind">
+					<h4>Wind & clouds</h4>
+					<p>Speed: {{ weather.wind }} km/h</p>
+					<p>Degree: {{ weather.wind_deg }} &#176;</p>
+					<p>Cloudy: {{ weather.clouds }} %</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="card-footer">
+		OpenWeatherMap API - https://github.com/MGPFE
+	</div>
+</div>
+
+<script>
+	var hour = parseInt("{{ hour }}", 10);
+	var city = "{{ weather.city }}";
+	var code = "{{ weather.code }}";
+	console.log(hour);
+	console.log(city);
+	// 9-17 DAY
+	// 18-21 EVENING
+	// 22-4 NIGHT
+	// 5-8 EVENING
+	if(hour >= 9 && hour < 18) {
+		document.body.style.backgroundImage = "url('static/imgs/day.jpg')";
+	} else if((hour >= 18 && hour < 22) || ( hour >= 5 && hour < 9)) {
+		document.body.style.backgroundImage = "url('static/imgs/evening.jpg')";
+	} else if(hour >= 22 || hour < 5) {
+		document.body.style.backgroundImage = "url('static/imgs/night.jpg')";
+		var card = document.getElementById("card");
+		var submit_city = document.getElementById("submit-city");
+		var city_input = document.getElementById("city-input");
+		var wind = document.getElementById("wind");
+		var weather_card = document.getElementById("weather");
+		var temperature = document.getElementById("temperature");
+		var icon = document.getElementById("icon");
+		card.style.backgroundColor = "#243447";
+		card.style.color = "white";
+		document.getElementById("top").style.borderBottom = "1px solid black";
+		document.getElementById("middle").style.borderBottom = "1px solid black";
+		document.getElementById("bottom").style.borderBottom = "1px solid black";
+		icon.style.boxShadow = "0px 0px 10px black";
+		wind.style.boxShadow = "0px 0px 10px black";
+		wind.style.boxShadow = "0px 0px 10px black";
+		wind.style.border = "0px";
+		weather_card.style.boxShadow = "0px 0px 10px black";
+		weather_card.style.boxShadow = "0px 0px 10px black";
+		weather_card.style.border = "0px";
+		temperature.style.boxShadow = "0px 0px 10px black";
+		temperature.style.border = "0px";
+		submit_city.style.backgroundColor = "#141d26";
+		submit_city.style.border = "1px solid black";
+		submit_city.style.color = "white";
+		city_input.style.backgroundColor = "#141d26";
+		city_input.style.border = "1px solid black";
+		city_input.style.color = "white";
+	}
+
+	if(city == "Please enter a city" || code != 200) {
+		document.getElementById("bottom").style.display = "none";
+		document.getElementById("middle").style.marginBottom = 0;
+	}
+</script>
+
+{% endblock %}
